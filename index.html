@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiOKri Life - Protezione e Welfare Aziendale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f2b46;
+            --secondary: #1d72b8;
+            --accent: #00b4d8;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        .tagline-box {
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            font-weight: 600;
+        }
+
+        /* Container Principale */
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Griglia Infografica */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card dell'infografica */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .card-1 { border-top-color: var(--secondary); }
+        .card-2 { border-top-color: var(--accent); }
+        .card-3 { border-top-color: var(--primary); }
+
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .card-1 .icon-wrapper { background: rgba(29, 114, 184, 0.1); color: var(--secondary); }
+        .card-2 .icon-wrapper { background: rgba(0, 180, 216, 0.1); color: var(--accent); }
+        .card-3 .icon-wrapper { background: rgba(15, 43, 70, 0.1); color: var(--primary); }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p.desc {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Liste interne alle card */
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+
+        .features-list li i {
+            margin-right: 10px;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        .card-1 .features-list i { color: var(--secondary); }
+        .card-2 .features-list i { color: var(--accent); }
+        .card-3 .features-list i { color: var(--primary); }
+
+        /* Obiettivi in evidenza nelle card */
+        .goal-box {
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-left: 4px solid;
+        }
+
+        .card-1 .goal-box { border-left-color: var(--secondary); color: var(--secondary); }
+        .card-2 .goal-box { border-left-color: var(--accent); color: #008fa8; }
+        .card-3 .goal-box { border-left-color: var(--primary); color: var(--primary); }
+
+        /* Sezione Call to Action & Contatti */
+        .cta-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(29, 114, 184, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(29, 114, 184, 0.4);
+        }
+
+        /* Griglia Contatti */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item:hover {
+            color: var(--secondary);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #aeafb0;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            .container { margin-top: -1rem; }
+            .contact-grid { flex-direction: column; align-items: flex-start; max-width: 300px; margin: 2rem auto 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GiOKri Life</h1>
+        <p>Supportiamo le PMI del territorio nella protezione aziendale, nel welfare e nell’ottimizzazione dei costi.</p>
+        <div class="tagline-box">Impresa • Persone • Continuità</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="grid">
+            <div class="card card-1">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2>Protezione Aziendale</h2>
+                <p class="desc">Analizziamo la struttura assicurativa dell’impresa per eliminare le vulnerabilità finanziarie.</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-circle-exclamation"></i> <strong>Scoperture:</strong> Individuazione dei rischi critici non protetti.</li>
+                    <li><i class="fa-solid fa-clone"></i> <strong>Sovrapposizioni:</strong> Taglio di polizze duplicate o inutili.</li>
+                    <li><i class="fa-solid fa-arrow-down-triangle-dash"></i> <strong>Inefficienze:</strong> Ottimizzazione dei costi assicurativi correnti.</li>
+                    <li><i class="fa-solid fa-lightbulb"></i> <strong>Soluzioni:</strong> Integrazione di coperture coerenti e sartoriali.</li>
+                </ul>
+                <div class="goal-box">
+                    <i class="fa-solid fa-target-arrow"></i> Obiettivo: Proteggere continuità e valore dell’impresa.
+                </div>
+            </div>
+
+            <div class="card card-2">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h2>Manager & Figure Chiave</h2>
+                <p class="desc">Tuteliamo il motore decisionale e strategico della tua azienda per blindare la governance.</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-key"></i> <strong>Key Man Insurance:</strong> Capitali a tutela della perdita di figure insostituibili.</li>
+                    <li><i class="fa-solid fa-chart-line-up"></i> <strong>Protezione del Reddito:</strong> Garanzie per il management.</li>
+                    <li><i class="fa-solid fa-handshake"></i> <strong>Continuità Gestionale:</strong> Soluzioni mirate per soci e amministratori.</li>
+                    <li><i class="fa-solid fa-gem"></i> <strong>Soluzioni Dedicate:</strong> Piani ad hoc per dirigenti apicali.</li>
+                </ul>
+                <div class="goal-box">
+                    <i class="fa-solid fa-target-arrow"></i> Obiettivo: Garantire stabilità e continuità decisionale.
+                </div>
+            </div>
+
+            <div class="card card-3">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h2>Welfare Dipendenti</h2>
+                <p class="desc">Miglioriamo le performance aziendali partendo dal benessere e dalla sicurezza dei collaboratori.</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-heart"></i> <strong>TCM (Caso Morte):</strong> Sostegno concreto alle famiglie in caso di imprevisti.</li>
+                    <li><i class="fa-solid fa-user-shield"></i> <strong>Coperture Infortuni:</strong> Protezione estesa sul posto di lavoro e non.</li>
+                    <li><i class="fa-solid fa-notes-medical"></i> <strong>Integrazione Sanitaria:</strong> Piani sanitari integrativi e previdenza.</li>
+                    <li><i class="fa-solid fa-gift"></i> <strong>Benefit Aziendali:</strong> Soluzioni per fidelizzare e attrarre talenti.</li>
+                </ul>
+                <div class="goal-box">
+                    <i class="fa-solid fa-target-arrow"></i> Obiettivo: Migliorare clima, fidelizzazione e produttività.
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>Analisi Conoscitiva Gratuita</h3>
+            <p>Incontriamoci senza impegno per mappare le necessità della tua azienda e scoprire come ottimizzare i costi correnti.</p>
+            <a href="mailto:giokrilife@gmail.com?subject=Richiesta%20Analisi%20Conoscitiva%20PMI" class="btn">Richiedi un Confronto</a>
+            
+            <div class="contact-grid">
+                <a href="https://maps.google.com/?q=Giokri+Life+Spresiano" target="_blank" class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i> Giokri Life a Spresiano (TV)
+                </a>
+                <a href="tel:+393271160053" class="contact-item">
+                    <i class="fa-solid fa-phone"></i> +39 327 1160053
+                </a>
+                <a href="mailto:giokrilife@gmail.com" class="contact-item">
+                    <i class="fa-solid fa-envelope"></i> giokrilife@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 GiOKri Life • Consulenza Strategica • Welfare • Energia • Protezione</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
