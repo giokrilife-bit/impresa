@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GiOKri Life - Protezione e Welfare Aziendale</title>
+    <title>GiOKri Life - Strategia di Protezione per le PMI</title>
+    <!-- FontAwesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #0f2b46;
-            --secondary: #1d72b8;
+            --primary: #0b2545;
+            --secondary: #134074;
             --accent: #00b4d8;
-            --light: #f8f9fa;
-            --dark: #212529;
+            --light-bg: #f4f7fa;
             --white: #ffffff;
+            --dark-text: #1d2d44;
+            --success: #2a9d8f;
         }
 
         * {
@@ -27,8 +30,8 @@
         }
 
         body {
-            background-color: #f0f4f8;
-            color: var(--dark);
+            background-color: var(--light-bg);
+            color: var(--dark-text);
             line-height: 1.6;
         }
 
@@ -37,215 +40,292 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
             text-align: center;
-            padding: 4rem 2rem;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding: 5rem 2rem;
+            position: relative;
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
 
-        header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
+        header p.subtitle {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
             opacity: 0.9;
+            font-weight: 300;
         }
 
-        .tagline-box {
-            background: rgba(255, 255, 255, 0.1);
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+        .value-proposition {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
             backdrop-filter: blur(5px);
-            font-weight: 600;
         }
 
-        /* Container Principale */
+        .value-proposition i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        /* Sezioni Interne */
         .container {
             max-width: 1200px;
-            margin: -2rem auto 4rem auto;
-            padding: 0 1.5rem;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
         }
 
-        /* Griglia Infografica */
-        .grid {
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* 1. SEZIONE CLUSTER */
+        .cluster-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .cluster-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border-left: 5px solid var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .cluster-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cluster-card .size-badge {
+            font-size: 0.8rem;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        .cluster-card .pain-point {
+            background: #fff5f5;
+            color: #c53030;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .cluster-card ul {
+            list-style: none;
+        }
+
+        .cluster-card ul li {
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .cluster-card ul li i {
+            color: var(--success);
+            margin-right: 8px;
+        }
+
+        /* 2. SEZIONE PRODOTTI STRATEGICI */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
         }
 
-        /* Card dell'infografica */
-        .card {
+        .pillar-card {
             background: var(--white);
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             padding: 2.5rem 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border-top: 5px solid transparent;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
         }
 
-        .card-1 { border-top-color: var(--secondary); }
-        .card-2 { border-top-color: var(--accent); }
-        .card-3 { border-top-color: var(--primary); }
-
-        .icon-wrapper {
-            width: 70px;
-            height: 70px;
-            border-radius: 50px;
+        .pillar-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--light-bg);
+            color: var(--secondary);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            margin-right: 1rem;
         }
 
-        .card-1 .icon-wrapper { background: rgba(29, 114, 184, 0.1); color: var(--secondary); }
-        .card-2 .icon-wrapper { background: rgba(0, 180, 216, 0.1); color: var(--accent); }
-        .card-3 .icon-wrapper { background: rgba(15, 43, 70, 0.1); color: var(--primary); }
-
-        .card h2 {
-            font-size: 1.5rem;
+        .pillar-card h2 {
+            font-size: 1.4rem;
             color: var(--primary);
+        }
+
+        .sub-section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8d99ae;
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .prod-list {
+            list-style: none;
             margin-bottom: 1rem;
         }
 
-        .card p.desc {
-            color: #6c757d;
+        .prod-list li {
+            padding: 0.4rem 0;
             font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Liste interne alle card */
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .features-list li {
-            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
             display: flex;
-            align-items: flex-start;
-            font-size: 0.95rem;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .features-list li i {
-            margin-right: 10px;
-            margin-top: 5px;
-            font-size: 0.9rem;
+        .prod-list li span.badge {
+            font-size: 0.75rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
         }
 
-        .card-1 .features-list i { color: var(--secondary); }
-        .card-2 .features-list i { color: var(--accent); }
-        .card-3 .features-list i { color: var(--primary); }
+        .badge-core { background: #fee2e2; color: #ef4444; }
+        .badge-strat { background: #e0e7ff; color: #4f46e5; }
 
-        /* Obiettivi in evidenza nelle card */
-        .goal-box {
-            background-color: var(--light);
+        /* Highlight box per il Welfare */
+        .welfare-highlight {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 1px solid #a5d6a7;
             padding: 1rem;
             border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-left: 4px solid;
+            margin-top: auto;
         }
 
-        .card-1 .goal-box { border-left-color: var(--secondary); color: var(--secondary); }
-        .card-2 .goal-box { border-left-color: var(--accent); color: #008fa8; }
-        .card-3 .goal-box { border-left-color: var(--primary); color: var(--primary); }
+        .welfare-highlight h4 {
+            color: #2e7d32;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
 
-        /* Sezione Call to Action & Contatti */
-        .cta-section {
-            background: var(--white);
+        .welfare-highlight h4 i { margin-right: 6px; }
+
+        .welfare-highlight p {
+            font-size: 0.85rem;
+            color: #1b5e20;
+        }
+
+        /* Call to Action */
+        .cta-box {
+            background: var(--primary);
+            color: var(--white);
             border-radius: 16px;
-            padding: 3rem 2rem;
+            padding: 3.5rem 2rem;
             text-align: center;
-            margin-top: 4rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-top: 5rem;
+            box-shadow: 0 15px 35px rgba(11, 37, 69, 0.2);
         }
 
-        .cta-section h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
+        .cta-box h3 {
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .cta-section p {
-            color: #6c757d;
-            max-width: 600px;
+        .cta-box p {
+            opacity: 0.85;
+            max-width: 650px;
             margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
         }
 
-        .btn {
+        .btn-action {
             display: inline-block;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
-            color: var(--white);
+            background: var(--accent);
+            color: var(--primary);
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(29, 114, 184, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(29, 114, 184, 0.4);
+        .btn-action:hover {
+            transform: scale(1.03);
+            background: #ffffff;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
-        /* Griglia Contatti */
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
+        .footer-contacts {
             margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e9ecef;
-        }
-
-        .contact-item {
             display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            color: var(--dark);
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .footer-contacts a {
+            color: var(--white);
             text-decoration: none;
-            transition: color 0.2s;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
 
-        .contact-item:hover {
-            color: var(--secondary);
-        }
+        .footer-contacts a:hover { opacity: 1; }
+        .footer-contacts i { color: var(--accent); margin-right: 8px; }
 
-        .contact-item i {
-            font-size: 1.2rem;
-            margin-right: 10px;
-            color: var(--secondary);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #aeafb0;
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            header p { font-size: 1rem; }
-            .container { margin-top: -1rem; }
-            .contact-grid { flex-direction: column; align-items: flex-start; max-width: 300px; margin: 2rem auto 0 auto; }
+            header h1 { font-size: 2.2rem; }
+            header p.subtitle { font-size: 1.1rem; }
+            .value-proposition { font-size: 0.95rem; }
+            .footer-contacts { flex-direction: column; gap: 1rem; align-items: center; }
         }
     </style>
 </head>
@@ -253,86 +333,140 @@
 
     <header>
         <h1>GiOKri Life</h1>
-        <p>Supportiamo le PMI del territorio nella protezione aziendale, nel welfare e nell’ottimizzazione dei costi.</p>
-        <div class="tagline-box">Impresa • Persone • Continuità</div>
+        <p class="subtitle">Consulenza Strategica e Gestione del Rischio per le PMI</p>
+        <div class="value-proposition">
+            <i class="fa-solid fa-calculator"></i> “Ti aiuto a evitare perdite economiche impreviste e a migliorare il benessere dei tuoi dipendenti senza aumentare i costi”
+        </div>
     </header>
 
     <div class="container">
         
-        <div class="grid">
-            <div class="card card-1">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h2>Protezione Aziendale</h2>
-                <p class="desc">Analizziamo la struttura assicurativa dell’impresa per eliminare le vulnerabilità finanziarie.</p>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <strong>Scoperture:</strong> Individuazione dei rischi critici non protetti.</li>
-                    <li><i class="fa-solid fa-clone"></i> <strong>Sovrapposizioni:</strong> Taglio di polizze duplicate o inutili.</li>
-                    <li><i class="fa-solid fa-arrow-down-triangle-dash"></i> <strong>Inefficienze:</strong> Ottimizzazione dei costi assicurativi correnti.</li>
-                    <li><i class="fa-solid fa-lightbulb"></i> <strong>Soluzioni:</strong> Integrazione di coperture coerenti e sartoriali.</li>
-                </ul>
-                <div class="goal-box">
-                    <i class="fa-solid fa-target-arrow"></i> Obiettivo: Proteggere continuità e valore dell’impresa.
-                </div>
-            </div>
-
-            <div class="card card-2">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-user-tie"></i>
-                </div>
-                <h2>Manager & Figure Chiave</h2>
-                <p class="desc">Tuteliamo il motore decisionale e strategico della tua azienda per blindare la governance.</p>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-key"></i> <strong>Key Man Insurance:</strong> Capitali a tutela della perdita di figure insostituibili.</li>
-                    <li><i class="fa-solid fa-chart-line-up"></i> <strong>Protezione del Reddito:</strong> Garanzie per il management.</li>
-                    <li><i class="fa-solid fa-handshake"></i> <strong>Continuità Gestionale:</strong> Soluzioni mirate per soci e amministratori.</li>
-                    <li><i class="fa-solid fa-gem"></i> <strong>Soluzioni Dedicate:</strong> Piani ad hoc per dirigenti apicali.</li>
-                </ul>
-                <div class="goal-box">
-                    <i class="fa-solid fa-target-arrow"></i> Obiettivo: Garantire stabilità e continuità decisionale.
-                </div>
-            </div>
-
-            <div class="card card-3">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <h2>Welfare Dipendenti</h2>
-                <p class="desc">Miglioriamo le performance aziendali partendo dal benessere e dalla sicurezza dei collaboratori.</p>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-heart"></i> <strong>TCM (Caso Morte):</strong> Sostegno concreto alle famiglie in caso di imprevisti.</li>
-                    <li><i class="fa-solid fa-user-shield"></i> <strong>Coperture Infortuni:</strong> Protezione estesa sul posto di lavoro e non.</li>
-                    <li><i class="fa-solid fa-notes-medical"></i> <strong>Integrazione Sanitaria:</strong> Piani sanitari integrativi e previdenza.</li>
-                    <li><i class="fa-solid fa-gift"></i> <strong>Benefit Aziendali:</strong> Soluzioni per fidelizzare e attrarre talenti.</li>
-                </ul>
-                <div class="goal-box">
-                    <i class="fa-solid fa-target-arrow"></i> Obiettivo: Migliorare clima, fidelizzazione e produttività.
-                </div>
-            </div>
-        </div>
-
-        <div class="cta-section">
-            <h3>Analisi Conoscitiva Gratuita</h3>
-            <p>Incontriamoci senza impegno per mappare le necessità della tua azienda e scoprire come ottimizzare i costi correnti.</p>
-            <a href="mailto:giokrilife@gmail.com?subject=Richiesta%20Analisi%20Conoscitiva%20PMI" class="btn">Richiedi un Confronto</a>
+        <!-- SEZIONE 1: TARGET E SEGMENTAZIONE -->
+        <h2 class="section-title">Soluzioni calibrate sul profilo aziendale</h2>
+        <div class="cluster-grid">
             
-            <div class="contact-grid">
-                <a href="https://maps.google.com/?q=Giokri+Life+Spresiano" target="_blank" class="contact-item">
-                    <i class="fa-solid fa-location-dot"></i> Giokri Life a Spresiano (TV)
-                </a>
-                <a href="tel:+393271160053" class="contact-item">
-                    <i class="fa-solid fa-phone"></i> +39 327 1160053
-                </a>
-                <a href="mailto:giokrilife@gmail.com" class="contact-item">
-                    <i class="fa-solid fa-envelope"></i> giokrilife@gmail.com
-                </a>
+            <!-- Micro Imprese -->
+            <div class="cluster-card">
+                <h3>Micro Imprese <span class="size-badge">1-10 Dip.</span></h3>
+                <div class="pain-point">
+                    <i class="fa-solid fa-triangle-exclamation"></i> "Se succede qualcosa, mi fermo"
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Massima semplicità burocratica</li>
+                    <li><i class="fa-solid fa-check"></i> Costo accessibile e ottimizzato</li>
+                    <li><i class="fa-solid fa-check"></i> Protezione immediata dell'operatività</li>
+                </ul>
             </div>
+
+            <!-- PMI Strutturate -->
+            <div class="cluster-card" style="border-left-color: var(--secondary);">
+                <h3>PMI Strutturate <span class="size-badge" style="background:#e0e7ff; color:#3730a3;">10-50 Dip.</span></h3>
+                <div class="pain-point" style="background:#fffbeb; color:#b45309;">
+                    <i class="fa-solid fa-shield"></i> Necessità: Welfare + Tutela Manageriale
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Blindatura del motore decisionale</li>
+                    <li><i class="fa-solid fa-check"></i> Primo approccio al Welfare aziendale</li>
+                    <li><i class="fa-solid fa-check"></i> Coperture specifiche di reparto</li>
+                </ul>
+            </div>
+
+            <!-- PMI Evolute -->
+            <div class="cluster-card" style="border-left-color: var(--primary);">
+                <h3>PMI Evolute <span class="size-badge" style="background:#f3e8ff; color:#6b21a8;">50+ Dip.</span></h3>
+                <div class="pain-point" style="background:#f0fdf4; color:#166534;">
+                    <i class="fa-solid fa-chart-pie"></i> Focus: Ottimizzazione e Retention
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Piani assicurativi altamente strutturati</li>
+                    <li><i class="fa-solid fa-check"></i> Massimizzazione dei vantaggi fiscali</li>
+                    <li><i class="fa-solid fa-check"></i> Strategie di attrazione talenti</li>
+                </ul>
+            </div>
+
         </div>
 
-        <footer>
-            <p>&copy; 2026 GiOKri Life • Consulenza Strategica • Welfare • Energia • Protezione</p>
-        </footer>
+        <!-- SEZIONE 2: ARCHITETTURA PRODOTTI -->
+        <h2 class="section-title">L'Architettura della Sicurezza</h2>
+        
+        <div class="pillars-grid">
+            
+            <!-- A. PER L'AZIENDA -->
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon"><i class="fa-solid fa-building"></i></div>
+                    <h2>Per l'Azienda</h2>
+                </div>
+                
+                <div class="sub-section-title">Misure Core (Fondamentali)</div>
+                <ul class="prod-list">
+                    <li>Responsabilità Civile (RC) <span class="badge badge-core">Core</span></li>
+                    <li>RC Prodotto <span class="badge badge-core">Core</span></li>
+                    <li>Incendio e Danni <span class="badge badge-core">Core</span></li>
+                    <li>Furto <span class="badge badge-core">Core</span></li>
+                </ul>
+
+                <div class="sub-section-title">Misure Strategiche (Differenzianti)</div>
+                <ul class="prod-list">
+                    <li>Business Interruption (Stop Attività) <span class="badge badge-strat">Strategico</span></li>
+                    <li>Cyber Risk <span class="badge badge-strat">Richiestissimo</span></li>
+                    <li>Tutela Legale Aziendale <span class="badge badge-strat">Strategico</span></li>
+                    <li>Polizza D&O (Amministratori) <span class="badge badge-strat">Strategico</span></li>
+                </ul>
+            </div>
+
+            <!-- B. PER L'IMPRENDITORE -->
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <h2>Per l'Imprenditore e Soci</h2>
+                </div>
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">Soluzioni create per blindare la stabilità economica personale e garantire la continuità del business.</p>
+                
+                <div class="sub-section-title">Tutela della Continuità</div>
+                <ul class="prod-list">
+                    <li>Key Man Insurance (Uomo Chiave) <span class="badge badge-strat">Top</span></li>
+                    <li>Temporanea Caso Morte (TCM) <span class="badge badge-core">Core</span></li>
+                    <li>Invalidità Permanente da Infortunio/Malattia <span class="badge badge-core">Core</span></li>
+                    <li>Piani di successione societaria <span class="badge badge-strat">Strategico</span></li>
+                </ul>
+            </div>
+
+            <!-- C. PER I DIPENDENTI -->
+            <div class="pillar-card" style="border: 2px solid var(--accent);">
+                <div class="pillar-header">
+                    <div class="pillar-icon" style="background:rgba(0,180,216,0.1); color:var(--accent);"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h2>Per i Dipendenti</h2>
+                </div>
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">Il vero potenziale di differenziazione commerciale rispetto alla concorrenza tradizionale.</p>
+                
+                <div class="sub-section-title">Welfare Assicurativo</div>
+                <ul class="prod-list">
+                    <li>Cassa Sanitaria Integrativa <span class="badge badge-strat" style="background:#d1fae5; color:#065f46;">Welfare</span></li>
+                    <li>Copertura Infortuni Collettiva <span class="badge badge-strat" style="background:#d1fae5; color:#065f46;">Welfare</span></li>
+                    <li>Polizza Vita Base <span class="badge badge-strat" style="background:#d1fae5; color:#065f46;">Welfare</span></li>
+                </ul>
+
+                <div class="welfare-highlight">
+                    <h4><i class="fa-solid fa-percent"></i> Triplo Vantaggio Competitivo</h4>
+                    <p>Totale <strong>deducibilità fiscale</strong> per l'azienda, <strong>costo di attivazione bassissimo</strong> rispetto ai vecchi aumenti in busta paga e <strong>percezione del valore altissima</strong> da parte del lavoratore.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CALL TO ACTION STRATEGICA -->
+        <div class="cta-box">
+            <h3>Richiedi un'Analisi di Efficienza Economica</h3>
+            <p>Mappiamo le tue polizze attuali, eliminiamo i doppioni inutili e sblocchiamo il potenziale fiscale del Welfare senza intaccare il budget aziendale.</p>
+            <a href="mailto:giokrilife@gmail.com?subject=Richiesta%20Mappatura%20Rischi%20PMI" class="btn-action">Ottimizza la tua Azienda</a>
+            
+            <div class="footer-contacts">
+                <a href="tel:+393271160053"><i class="fa-solid fa-phone"></i> +39 327 1160053</a>
+                <a href="mailto:giokrilife@gmail.com"><i class="fa-solid fa-envelope"></i> giokrilife@gmail.com</a>
+                <a href="https://maps.google.com/?q=Giokri+Life+Spresiano" target="_blank"><i class="fa-solid fa-location-dot"></i> Spresiano (TV)</a>
+            </div>
+        </div>
 
     </div>
 
