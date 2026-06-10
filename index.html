@@ -648,11 +648,13 @@ async function sSubmit(){
 
   // Invia a Google Sheets (no-cors: fire-and-forget)
   try {
+    // FormData è il metodo più affidabile con Google Apps Script + no-cors
+    const formData = new FormData();
+    Object.entries(payload).forEach(([k,v]) => formData.append(k, String(v)));
     await fetch(SHEET_URL, {
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
+      method: 'POST',
+      mode:   'no-cors',
+      body:   formData
     });
   } catch(e){
     // Fallisce silenziosamente — i dati rimangono visibili all'utente
