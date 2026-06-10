@@ -646,20 +646,9 @@ async function sSubmit(){
     priorita:       score>=70?'Alta':score>=40?'Media':'Bassa'
   };
 
-  // Invia a Google Sheets (no-cors: fire-and-forget)
-  try {
-    // FormData è il metodo più affidabile con Google Apps Script + no-cors
-    const formData = new FormData();
-    Object.entries(payload).forEach(([k,v]) => formData.append(k, String(v)));
-    await fetch(SHEET_URL, {
-      method: 'POST',
-      mode:   'no-cors',
-      body:   formData
-    });
-  } catch(e){
-    // Fallisce silenziosamente — i dati rimangono visibili all'utente
-    console.warn('Invio Sheet non riuscito:', e);
-  }
+  // Invia a Google Sheets tramite form + iframe nascosto
+  // Questo metodo aggira i blocchi CORS del browser in modo affidabile
+  sendViaIframe(SHEET_URL, payload);
 
   // Mostra risultato
   showResult(score, prop, prob);
@@ -718,6 +707,48 @@ function sReset(){
 
 // Boot
 updateProgress();
+
+// ── INVIO A GOOGLE SHEETS VIA IFRAME (aggira CORS) ──────────────────────────
+// Crea un form HTML invisibile con tutti i dati e lo invia tramite un iframe
+// nascosto — metodo garantito con Google Apps Script indipendentemente da CORS
+function sendViaIframe(url, data) {
+  try {
+    // Iframe nascosto come target del form
+    const iframeName = 'gs_iframe_' + Date.now();
+    const iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    // Form invisibile
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
+    form.target = iframeName;
+    form.style.display = 'none';
+
+    // Un campo hidden per ogni dato
+    Object.entries(data).forEach(function([key, val]) {
+      const input = document.createElement('input');
+      input.type  = 'hidden';
+      input.name  = key;
+      input.value = String(val);
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+
+    // Pulizia dopo 5 secondi
+    setTimeout(function() {
+      if (form.parentNode)   form.parentNode.removeChild(form);
+      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+    }, 5000);
+  } catch(err) {
+    console.warn('sendViaIframe fallito:', err.message);
+  }
+}
+
 </script>
 
 </body>
