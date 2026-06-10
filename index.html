@@ -1,474 +1,722 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GiOKri Life - Strategia di Protezione per le PMI</title>
-    <!-- FontAwesome per le icone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #0b2545;
-            --secondary: #134074;
-            --accent: #00b4d8;
-            --light-bg: #f4f7fa;
-            --white: #ffffff;
-            --dark-text: #1d2d44;
-            --success: #2a9d8f;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GiOKri Life – Strategia di Protezione per le PMI</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0f1e;color:#e8eaf0;line-height:1.6;font-size:15px}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+/* ── PALETTE ── */
+:root{
+  --gold:#c9a84c;--gold2:#e8c97a;--golddark:#8a6a1f;
+  --blue:#1a2340;--blue2:#0d1528;--blue3:#111827;
+  --accent:#2563eb;--accentL:#1d4ed8;
+  --green:#15803d;--greenL:#dcfce7;
+  --amber:#b45309;--amberL:#fef3c7;
+  --red:#dc2626;--redL:#fee2e2;
+  --border:rgba(201,168,76,0.2);--border2:rgba(201,168,76,0.4);
+  --text:#e8eaf0;--muted:#9ca3af;
+  --card:rgba(255,255,255,0.04);--card2:rgba(255,255,255,0.07);
+}
 
-        body {
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            line-height: 1.6;
-        }
+/* ── TYPOGRAPHY ── */
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:600}
+h3{font-size:1.1rem;font-weight:600}
+.gold{color:var(--gold)}
+.gold2{color:var(--gold2)}
+.muted{color:var(--muted)}
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 2rem;
-            position: relative;
-        }
+/* ── LAYOUT ── */
+section{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
+.section-full{padding:5rem 1.5rem;background:var(--blue2)}
+.section-full > *{max-width:1100px;margin:0 auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
 
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:4rem 1.5rem;background:radial-gradient(ellipse at 60% 30%,rgba(201,168,76,.12) 0%,transparent 60%),linear-gradient(160deg,#0a0f1e 0%,#0d1528 100%)}
+#hero .sub{font-size:clamp(1rem,2.5vw,1.25rem);color:var(--muted);max-width:680px;margin:1.2rem auto 2rem}
+#hero .quote{font-style:italic;color:var(--gold);font-size:clamp(.95rem,2vw,1.1rem);border-left:3px solid var(--gold);padding-left:1rem;max-width:600px;margin:0 auto 2.5rem;text-align:left}
 
-        header p.subtitle {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-            opacity: 0.9;
-            font-weight: 300;
-        }
+/* ── BUTTONS ── */
+.btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;text-decoration:none;border:none}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e}
+.btn-gold:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:#0a0f1e}
 
-        .value-proposition {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            backdrop-filter: blur(5px);
-        }
+/* ── CARDS ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.card:hover{border-color:var(--border2);background:var(--card2);transition:all .2s}
+.card-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:.75rem}
+.tag-core{background:rgba(37,99,235,.2);color:#60a5fa}
+.tag-strategic{background:rgba(201,168,76,.15);color:var(--gold)}
+.tag-top{background:rgba(239,68,68,.15);color:#f87171}
+.tag-welfare{background:rgba(21,128,61,.2);color:#4ade80}
+.tag-hot{background:rgba(239,68,68,.2);color:#f87171}
+.pip{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.5rem;font-size:14px}
+.pip::before{content:"▸";color:var(--gold);flex-shrink:0;margin-top:2px}
 
-        .value-proposition i {
-            color: var(--accent);
-            margin-right: 8px;
-        }
+/* ── DIVIDER ── */
+.divider{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;margin:1rem 0 1.5rem}
 
-        /* Sezioni Interne */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:.75rem 1.5rem;background:rgba(10,15,30,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.nav-logo{font-weight:700;font-size:16px;color:var(--gold)}
+.nav-links{display:flex;gap:1rem;flex-wrap:wrap}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
 
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            position: relative;
-        }
+/* ── HIGHLIGHT BOX ── */
+.highlight{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.05));border:1px solid var(--border2);border-radius:14px;padding:2rem}
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
-        }
+/* ── SURVEY ── */
+#survey-section{background:linear-gradient(160deg,#0d1528,#0a0f1e);padding:5rem 1.5rem}
+#survey-wrap{max-width:680px;margin:0 auto}
 
-        /* 1. SEZIONE CLUSTER */
-        .cluster-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
+/* Progress */
+.s-progress-track{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;margin-bottom:.5rem}
+.s-progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s ease}
 
-        .cluster-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border-left: 5px solid var(--accent);
-            transition: transform 0.2s;
-        }
+/* Step cards */
+.s-step{display:none}
+.s-step.active{display:block}
+.s-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:1.75rem}
 
-        .cluster-card:hover {
-            transform: translateY(-3px);
-        }
+/* Options */
+.s-opt{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;cursor:pointer;border:1.5px solid rgba(255,255,255,.1);background:transparent;margin-bottom:8px;transition:all .15s;user-select:none;color:var(--text)}
+.s-opt:hover{border-color:var(--gold);background:rgba(201,168,76,.07)}
+.s-opt.sel-radio{border-color:var(--gold);background:rgba(201,168,76,.12)}
+.s-opt.sel-multi{border-color:#4ade80;background:rgba(21,128,61,.12)}
+.s-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.s-opt.sel-radio .s-dot{border-color:var(--gold);background:var(--gold)}
+.s-dot-inner{width:6px;height:6px;border-radius:50%;background:#0a0f1e;display:none}
+.s-opt.sel-radio .s-dot-inner{display:block}
+.s-box{width:16px;height:16px;border-radius:4px;border:2px solid rgba(255,255,255,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.s-opt.sel-multi .s-box{border-color:#4ade80;background:#4ade80}
+.s-check{display:none;color:#0a0f1e;font-size:10px;font-weight:800}
+.s-opt.sel-multi .s-check{display:block}
 
-        .cluster-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+/* Scale */
+.s-scale{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.s-sbtn{width:46px;height:46px;border-radius:10px;border:1.5px solid rgba(255,255,255,.15);background:transparent;color:var(--muted);font-size:16px;font-weight:500;cursor:pointer;transition:all .15s}
+.s-sbtn:hover{border-color:var(--gold);color:var(--gold)}
+.s-sbtn.on{border-color:var(--gold);background:var(--gold);color:#0a0f1e}
 
-        .cluster-card .size-badge {
-            font-size: 0.8rem;
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-        }
+/* Inputs */
+.s-input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--text);padding:10px 14px;border-radius:10px;font-size:14px;font-family:inherit;outline:none;width:100%}
+.s-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.15)}
+.s-label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
 
-        .cluster-card .pain-point {
-            background: #fff5f5;
-            color: #c53030;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            font-weight: 500;
-        }
+/* Nav buttons */
+.s-nav{display:flex;gap:10px;margin-top:1.5rem}
+.s-btn{padding:10px 20px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:var(--muted);font-family:inherit;transition:all .15s}
+.s-btn:hover:not(:disabled){background:rgba(255,255,255,.07)}
+.s-btn:disabled{opacity:.35;cursor:not-allowed}
+.s-btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;border-color:transparent}
+.s-btn-primary:hover:not(:disabled){filter:brightness(1.1)}
+.s-btn-primary:disabled{opacity:.35}
+.s-btn-submit{background:linear-gradient(135deg,#15803d,#16a34a);color:#fff;border-color:transparent}
 
-        .cluster-card ul {
-            list-style: none;
-        }
+/* Score bars */
+.s-scorebar{margin-bottom:14px}
+.s-scorebar-track{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:5px}
+.s-scorebar-fill{height:100%;border-radius:4px;transition:width .8s ease}
 
-        .cluster-card ul li {
-            font-size: 0.9rem;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-        }
+/* Sending spinner */
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,.3);border-top-color:#0a0f1e;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-        .cluster-card ul li i {
-            color: var(--success);
-            margin-right: 8px;
-        }
-
-        /* 2. SEZIONE PRODOTTI STRATEGICI */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .pillar-card {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            padding: 2.5rem 2rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pillar-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .pillar-icon {
-            width: 55px;
-            height: 55px;
-            background: var(--light-bg);
-            color: var(--secondary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .pillar-card h2 {
-            font-size: 1.4rem;
-            color: var(--primary);
-        }
-
-        .sub-section-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8d99ae;
-            margin: 1rem 0 0.5rem 0;
-            font-weight: 600;
-        }
-
-        .prod-list {
-            list-style: none;
-            margin-bottom: 1rem;
-        }
-
-        .prod-list li {
-            padding: 0.4rem 0;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #f1f5f9;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .prod-list li span.badge {
-            font-size: 0.75rem;
-            padding: 0.1rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .badge-core { background: #fee2e2; color: #ef4444; }
-        .badge-strat { background: #e0e7ff; color: #4f46e5; }
-
-        /* Highlight box per il Welfare */
-        .welfare-highlight {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            border: 1px solid #a5d6a7;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: auto;
-        }
-
-        .welfare-highlight h4 {
-            color: #2e7d32;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .welfare-highlight h4 i { margin-right: 6px; }
-
-        .welfare-highlight p {
-            font-size: 0.85rem;
-            color: #1b5e20;
-        }
-
-        /* Call to Action */
-        .cta-box {
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 16px;
-            padding: 3.5rem 2rem;
-            text-align: center;
-            margin-top: 5rem;
-            box-shadow: 0 15px 35px rgba(11, 37, 69, 0.2);
-        }
-
-        .cta-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-box p {
-            opacity: 0.85;
-            max-width: 650px;
-            margin: 0 auto 2rem auto;
-            font-size: 1.1rem;
-        }
-
-        .btn-action {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.2s;
-            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
-        }
-
-        .btn-action:hover {
-            transform: scale(1.03);
-            background: #ffffff;
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-contacts {
-            margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-        }
-
-        .footer-contacts a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .footer-contacts a:hover { opacity: 1; }
-        .footer-contacts i { color: var(--accent); margin-right: 8px; }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            header p.subtitle { font-size: 1.1rem; }
-            .value-proposition { font-size: 0.95rem; }
-            .footer-contacts { flex-direction: column; gap: 1rem; align-items: center; }
-        }
-    </style>
+/* ── FOOTER ── */
+footer{background:#060b16;border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--gold);text-decoration:none}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>GiOKri Life</h1>
-        <p class="subtitle">Consulenza Strategica e Gestione del Rischio per le PMI</p>
-        <div class="value-proposition">
-            <i class="fa-solid fa-calculator"></i> “Ti aiuto a evitare perdite economiche impreviste e a migliorare il benessere dei tuoi dipendenti senza aumentare i costi”
-        </div>
-    </header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">GiOKri Life</div>
+  <div class="nav-links">
+    <a href="#soluzioni">Soluzioni</a>
+    <a href="#architettura">Architettura</a>
+    <a href="#welfare">Welfare</a>
+    <a href="#survey-section">Analisi Gratuita</a>
+    <a href="#contatti">Contatti</a>
+  </div>
+</nav>
 
-    <div class="container">
-        
-        <!-- SEZIONE 1: TARGET E SEGMENTAZIONE -->
-        <h2 class="section-title">Soluzioni calibrate sul profilo aziendale</h2>
-        <div class="cluster-grid">
-            
-            <!-- Micro Imprese -->
-            <div class="cluster-card">
-                <h3>Micro Imprese <span class="size-badge">1-10 Dip.</span></h3>
-                <div class="pain-point">
-                    <i class="fa-solid fa-triangle-exclamation"></i> "Se succede qualcosa, mi fermo"
-                </div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Massima semplicità burocratica</li>
-                    <li><i class="fa-solid fa-check"></i> Costo accessibile e ottimizzato</li>
-                    <li><i class="fa-solid fa-check"></i> Protezione immediata dell'operatività</li>
-                </ul>
-            </div>
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div id="hero" style="padding-top:5rem">
+  <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">Consulenza Strategica · Gestione del Rischio · PMI</p>
+  <h1>GiOKri <span class="gold">Life</span></h1>
+  <p class="sub">Protezione intelligente per l'impresa italiana. Dal rischio all'opportunità.</p>
+  <div class="quote">
+    "Ti aiuto a evitare perdite economiche impreviste e a migliorare il benessere dei tuoi dipendenti senza aumentare i costi."
+  </div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+    <a href="#survey-section" class="btn btn-gold">🎯 Fai l'Analisi Gratuita</a>
+    <a href="#soluzioni" class="btn btn-outline">Scopri le soluzioni</a>
+  </div>
+</div>
 
-            <!-- PMI Strutturate -->
-            <div class="cluster-card" style="border-left-color: var(--secondary);">
-                <h3>PMI Strutturate <span class="size-badge" style="background:#e0e7ff; color:#3730a3;">10-50 Dip.</span></h3>
-                <div class="pain-point" style="background:#fffbeb; color:#b45309;">
-                    <i class="fa-solid fa-shield"></i> Necessità: Welfare + Tutela Manageriale
-                </div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Blindatura del motore decisionale</li>
-                    <li><i class="fa-solid fa-check"></i> Primo approccio al Welfare aziendale</li>
-                    <li><i class="fa-solid fa-check"></i> Coperture specifiche di reparto</li>
-                </ul>
-            </div>
+<!-- ══════════════════════════════════════════
+     SOLUZIONI PER DIMENSIONE
+══════════════════════════════════════════ -->
+<section id="soluzioni">
+  <p style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Soluzioni su misura</p>
+  <h2>Calibrate sul <span class="gold">profilo aziendale</span></h2>
+  <div class="divider"></div>
+  <div class="grid3" style="margin-top:2rem">
 
-            <!-- PMI Evolute -->
-            <div class="cluster-card" style="border-left-color: var(--primary);">
-                <h3>PMI Evolute <span class="size-badge" style="background:#f3e8ff; color:#6b21a8;">50+ Dip.</span></h3>
-                <div class="pain-point" style="background:#f0fdf4; color:#166534;">
-                    <i class="fa-solid fa-chart-pie"></i> Focus: Ottimizzazione e Retention
-                </div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Piani assicurativi altamente strutturati</li>
-                    <li><i class="fa-solid fa-check"></i> Massimizzazione dei vantaggi fiscali</li>
-                    <li><i class="fa-solid fa-check"></i> Strategie di attrazione talenti</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- SEZIONE 2: ARCHITETTURA PRODOTTI -->
-        <h2 class="section-title">L'Architettura della Sicurezza</h2>
-        
-        <div class="pillars-grid">
-            
-            <!-- A. PER L'AZIENDA -->
-            <div class="pillar-card">
-                <div class="pillar-header">
-                    <div class="pillar-icon"><i class="fa-solid fa-building"></i></div>
-                    <h2>Per l'Azienda</h2>
-                </div>
-                
-                <div class="sub-section-title">Misure Core (Fondamentali)</div>
-                <ul class="prod-list">
-                    <li>Responsabilità Civile (RC) <span class="badge badge-core">Core</span></li>
-                    <li>RC Prodotto <span class="badge badge-core">Core</span></li>
-                    <li>Incendio e Danni <span class="badge badge-core">Core</span></li>
-                    <li>Furto <span class="badge badge-core">Core</span></li>
-                </ul>
-
-                <div class="sub-section-title">Misure Strategiche (Differenzianti)</div>
-                <ul class="prod-list">
-                    <li>Business Interruption (Stop Attività) <span class="badge badge-strat">Strategico</span></li>
-                    <li>Cyber Risk <span class="badge badge-strat">Richiestissimo</span></li>
-                    <li>Tutela Legale Aziendale <span class="badge badge-strat">Strategico</span></li>
-                    <li>Polizza D&O (Amministratori) <span class="badge badge-strat">Strategico</span></li>
-                </ul>
-            </div>
-
-            <!-- B. PER L'IMPRENDITORE -->
-            <div class="pillar-card">
-                <div class="pillar-header">
-                    <div class="pillar-icon"><i class="fa-solid fa-user-shield"></i></div>
-                    <h2>Per l'Imprenditore e Soci</h2>
-                </div>
-                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">Soluzioni create per blindare la stabilità economica personale e garantire la continuità del business.</p>
-                
-                <div class="sub-section-title">Tutela della Continuità</div>
-                <ul class="prod-list">
-                    <li>Key Man Insurance (Uomo Chiave) <span class="badge badge-strat">Top</span></li>
-                    <li>Temporanea Caso Morte (TCM) <span class="badge badge-core">Core</span></li>
-                    <li>Invalidità Permanente da Infortunio/Malattia <span class="badge badge-core">Core</span></li>
-                    <li>Piani di successione societaria <span class="badge badge-strat">Strategico</span></li>
-                </ul>
-            </div>
-
-            <!-- C. PER I DIPENDENTI -->
-            <div class="pillar-card" style="border: 2px solid var(--accent);">
-                <div class="pillar-header">
-                    <div class="pillar-icon" style="background:rgba(0,180,216,0.1); color:var(--accent);"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h2>Per i Dipendenti</h2>
-                </div>
-                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">Il vero potenziale di differenziazione commerciale rispetto alla concorrenza tradizionale.</p>
-                
-                <div class="sub-section-title">Welfare Assicurativo</div>
-                <ul class="prod-list">
-                    <li>Cassa Sanitaria Integrativa <span class="badge badge-strat" style="background:#d1fae5; color:#065f46;">Welfare</span></li>
-                    <li>Copertura Infortuni Collettiva <span class="badge badge-strat" style="background:#d1fae5; color:#065f46;">Welfare</span></li>
-                    <li>Polizza Vita Base <span class="badge badge-strat" style="background:#d1fae5; color:#065f46;">Welfare</span></li>
-                </ul>
-
-                <div class="welfare-highlight">
-                    <h4><i class="fa-solid fa-percent"></i> Triplo Vantaggio Competitivo</h4>
-                    <p>Totale <strong>deducibilità fiscale</strong> per l'azienda, <strong>costo di attivazione bassissimo</strong> rispetto ai vecchi aumenti in busta paga e <strong>percezione del valore altissima</strong> da parte del lavoratore.</p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CALL TO ACTION STRATEGICA -->
-        <div class="cta-box">
-            <h3>Richiedi un'Analisi di Efficienza Economica</h3>
-            <p>Mappiamo le tue polizze attuali, eliminiamo i doppioni inutili e sblocchiamo il potenziale fiscale del Welfare senza intaccare il budget aziendale.</p>
-            <a href="mailto:giokrilife@gmail.com?subject=Richiesta%20Mappatura%20Rischi%20PMI" class="btn-action">Ottimizza la tua Azienda</a>
-            
-            <div class="footer-contacts">
-                <a href="tel:+393271160053"><i class="fa-solid fa-phone"></i> +39 327 1160053</a>
-                <a href="mailto:giokrilife@gmail.com"><i class="fa-solid fa-envelope"></i> giokrilife@gmail.com</a>
-                <a href="https://maps.google.com/?q=Giokri+Life+Spresiano" target="_blank"><i class="fa-solid fa-location-dot"></i> Spresiano (TV)</a>
-            </div>
-        </div>
-
+    <div class="card">
+      <div class="card-tag tag-core">Micro Imprese · 1–10 Dip.</div>
+      <h3 style="margin-bottom:.5rem">"Se succede qualcosa, mi fermo"</h3>
+      <p class="muted" style="font-size:13px;margin-bottom:1rem">La priorità è operatività immediata a costi contenuti.</p>
+      <div class="pip">Massima semplicità burocratica</div>
+      <div class="pip">Costo accessibile e ottimizzato</div>
+      <div class="pip">Protezione immediata dell'operatività</div>
     </div>
+
+    <div class="card" style="border-color:var(--border2)">
+      <div class="card-tag tag-strategic">PMI Strutturate · 10–50 Dip.</div>
+      <h3 style="margin-bottom:.5rem">Welfare + Tutela Manageriale</h3>
+      <p class="muted" style="font-size:13px;margin-bottom:1rem">Il motore decisionale va blindato. Il welfare va avviato.</p>
+      <div class="pip">Blindatura del motore decisionale</div>
+      <div class="pip">Primo approccio al Welfare aziendale</div>
+      <div class="pip">Coperture specifiche di reparto</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag tag-top">PMI Evolute · 50+ Dip.</div>
+      <h3 style="margin-bottom:.5rem">Ottimizzazione e Retention</h3>
+      <p class="muted" style="font-size:13px;margin-bottom:1rem">Strutture avanzate per attrarre e trattenere talenti.</p>
+      <div class="pip">Piani assicurativi altamente strutturati</div>
+      <div class="pip">Massimizzazione dei vantaggi fiscali</div>
+      <div class="pip">Strategie di attrazione talenti</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ARCHITETTURA DELLA SICUREZZA
+══════════════════════════════════════════ -->
+<div class="section-full" id="architettura">
+<section style="padding:0">
+  <p style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Copertura completa</p>
+  <h2>L'Architettura della <span class="gold">Sicurezza</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid3" style="margin-top:2rem">
+
+    <!-- Per l'Azienda -->
+    <div>
+      <h3 style="color:var(--gold2);margin-bottom:1rem">🏢 Per l'Azienda</h3>
+      <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem">Misure Core</p>
+      <div class="pip"><span class="card-tag tag-core" style="margin:0 4px 0 0">Core</span> Responsabilità Civile</div>
+      <div class="pip"><span class="card-tag tag-core" style="margin:0 4px 0 0">Core</span> RC Prodotto</div>
+      <div class="pip"><span class="card-tag tag-core" style="margin:0 4px 0 0">Core</span> Incendio e Danni</div>
+      <div class="pip"><span class="card-tag tag-core" style="margin:0 4px 0 0">Core</span> Furto</div>
+      <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:1rem 0 .75rem">Misure Strategiche</p>
+      <div class="pip"><span class="card-tag tag-strategic" style="margin:0 4px 0 0">Strategico</span> Business Interruption</div>
+      <div class="pip"><span class="card-tag tag-hot" style="margin:0 4px 0 0">🔥 Hot</span> Cyber Risk</div>
+      <div class="pip"><span class="card-tag tag-strategic" style="margin:0 4px 0 0">Strategico</span> Tutela Legale Aziendale</div>
+      <div class="pip"><span class="card-tag tag-strategic" style="margin:0 4px 0 0">Strategico</span> Polizza D&amp;O (Amministratori)</div>
+    </div>
+
+    <!-- Per l'Imprenditore -->
+    <div>
+      <h3 style="color:var(--gold2);margin-bottom:1rem">👤 Per l'Imprenditore</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Soluzioni per blindare la stabilità economica personale e garantire la continuità del business.</p>
+      <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem">Tutela della Continuità</p>
+      <div class="pip"><span class="card-tag tag-top" style="margin:0 4px 0 0">Top</span> Key Man Insurance</div>
+      <div class="pip"><span class="card-tag tag-core" style="margin:0 4px 0 0">Core</span> Temporanea Caso Morte</div>
+      <div class="pip"><span class="card-tag tag-core" style="margin:0 4px 0 0">Core</span> Invalidità Permanente</div>
+      <div class="pip"><span class="card-tag tag-strategic" style="margin:0 4px 0 0">Strategico</span> Piani di successione societaria</div>
+    </div>
+
+    <!-- Per i Dipendenti -->
+    <div id="welfare">
+      <h3 style="color:var(--gold2);margin-bottom:1rem">👥 Per i Dipendenti</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Il vero potenziale di differenziazione commerciale rispetto alla concorrenza tradizionale.</p>
+      <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem">Welfare Assicurativo</p>
+      <div class="pip"><span class="card-tag tag-welfare" style="margin:0 4px 0 0">Welfare</span> Cassa Sanitaria Integrativa</div>
+      <div class="pip"><span class="card-tag tag-welfare" style="margin:0 4px 0 0">Welfare</span> Copertura Infortuni Collettiva</div>
+      <div class="pip"><span class="card-tag tag-welfare" style="margin:0 4px 0 0">Welfare</span> Polizza Vita Base</div>
+
+      <div class="highlight" style="margin-top:1.5rem">
+        <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">⚡ Triplo Vantaggio</p>
+        <div class="pip">Totale <strong class="gold">deducibilità fiscale</strong> per l'azienda</div>
+        <div class="pip"><strong class="gold">Costo bassissimo</strong> rispetto agli aumenti in busta paga</div>
+        <div class="pip"><strong class="gold">Percezione del valore altissima</strong> da parte del lavoratore</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SURVEY — ANALISI GRATUITA
+══════════════════════════════════════════ -->
+<div id="survey-section">
+<div id="survey-wrap">
+
+  <div style="text-align:center;margin-bottom:3rem">
+    <p style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Strumento interattivo</p>
+    <h2>Analisi Gratuita del <span class="gold">Potenziale Welfare</span></h2>
+    <div class="divider" style="margin:1rem auto"></div>
+    <p style="color:var(--muted);max-width:520px;margin:0 auto">Rispondi a 10 domande e scopri subito il tuo score di interesse welfare e le soluzioni più adatte alla tua azienda.</p>
+  </div>
+
+  <!-- Progress -->
+  <div style="margin-bottom:1.5rem">
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px">
+      <span id="s-step-label">Passo 1 di 6</span><span id="s-step-pct">0%</span>
+    </div>
+    <div class="s-progress-track"><div class="s-progress-fill" id="s-bar" style="width:0%"></div></div>
+  </div>
+
+  <!-- ── STEP 0: Dati azienda ── -->
+  <div class="s-step active s-card" id="s-step-0">
+    <h3 style="margin-bottom:5px">👋 Benvenuto nell'Analisi Gratuita</h3>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:1.5rem">3 minuti per scoprire il potenziale welfare della tua azienda e ricevere uno score personalizzato.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <label class="s-label">Nome azienda *</label>
+        <input class="s-input" id="f-azienda" type="text" placeholder="es. Rossi Srl" autocomplete="organization" oninput="checkStep0()">
+      </div>
+      <div>
+        <label class="s-label">Referente (opz.)</label>
+        <input class="s-input" id="f-referente" type="text" placeholder="Nome e cognome" autocomplete="name">
+      </div>
+      <div>
+        <label class="s-label">Email (opz.)</label>
+        <input class="s-input" id="f-email" type="email" placeholder="email@azienda.it" autocomplete="email">
+      </div>
+    </div>
+    <div class="s-nav">
+      <button class="s-btn s-btn-primary" id="btn-s-next-0" onclick="sNext()" disabled>Inizia l'analisi →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 1: Sezione A ── -->
+  <div class="s-step s-card" id="s-step-1">
+    <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem">Sezione A</p>
+    <h3 style="margin-bottom:1.25rem">Profilo azienda</h3>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">1. Settore di attività</p>
+      <div class="s-opt" data-group="settore" data-val="Produzione" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Produzione</div>
+      <div class="s-opt" data-group="settore" data-val="Servizi" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Servizi</div>
+      <div class="s-opt" data-group="settore" data-val="Commercio" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Commercio</div>
+      <div class="s-opt" data-group="settore" data-val="Artigianato" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Artigianato</div>
+      <div class="s-opt" data-group="settore" data-val="Altro" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Altro</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">2. Numero dipendenti</p>
+      <div class="s-opt" data-group="dipendenti" data-val="1–5" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>1–5</div>
+      <div class="s-opt" data-group="dipendenti" data-val="6–20" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>6–20</div>
+      <div class="s-opt" data-group="dipendenti" data-val="21–50" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>21–50</div>
+      <div class="s-opt" data-group="dipendenti" data-val="50+" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>50+</div>
+    </div>
+    <div class="s-nav">
+      <button class="s-btn" onclick="sPrev()" style="flex:1">← Indietro</button>
+      <button class="s-btn s-btn-primary" id="btn-s-next-1" onclick="sNext()" disabled style="flex:2">Avanti →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Sezione B ── -->
+  <div class="s-step s-card" id="s-step-2">
+    <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem">Sezione B</p>
+    <h3 style="margin-bottom:1.25rem">Clima aziendale</h3>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">3. Soddisfazione dei dipendenti (1–5)</p>
+      <div class="s-scale">
+        <button class="s-sbtn" data-key="soddisfazione" data-val="1" onclick="sScale(this)">1</button>
+        <button class="s-sbtn" data-key="soddisfazione" data-val="2" onclick="sScale(this)">2</button>
+        <button class="s-sbtn" data-key="soddisfazione" data-val="3" onclick="sScale(this)">3</button>
+        <button class="s-sbtn" data-key="soddisfazione" data-val="4" onclick="sScale(this)">4</button>
+        <button class="s-sbtn" data-key="soddisfazione" data-val="5" onclick="sScale(this)">5</button>
+        <span id="lbl-soddisfazione" style="font-size:12px;color:var(--muted);margin-left:4px">seleziona</span>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">4. Difficoltà a trattenere personale qualificato?</p>
+      <div class="s-opt" data-group="difficolta" data-val="Sì, spesso" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Sì, spesso</div>
+      <div class="s-opt" data-group="difficolta" data-val="A volte" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>A volte</div>
+      <div class="s-opt" data-group="difficolta" data-val="No" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>No</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">5. Turnover negli ultimi 2 anni</p>
+      <div class="s-opt" data-group="turnover" data-val="Alto" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Alto</div>
+      <div class="s-opt" data-group="turnover" data-val="Medio" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Medio</div>
+      <div class="s-opt" data-group="turnover" data-val="Basso" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Basso</div>
+      <div class="s-opt" data-group="turnover" data-val="Non rilevato" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Non rilevato</div>
+    </div>
+    <div class="s-nav">
+      <button class="s-btn" onclick="sPrev()" style="flex:1">← Indietro</button>
+      <button class="s-btn s-btn-primary" id="btn-s-next-2" onclick="sNext()" disabled style="flex:2">Avanti →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Sezione C ── -->
+  <div class="s-step s-card" id="s-step-3">
+    <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem">Sezione C</p>
+    <h3 style="margin-bottom:1.25rem">Welfare attuale</h3>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">6. Forme di welfare già attive in azienda?</p>
+      <div class="s-opt" data-group="welfareAttuale" data-val="No" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>No</div>
+      <div class="s-opt" data-group="welfareAttuale" data-val="Sì, minimo (bonus occasionali)" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Sì, minimo (bonus occasionali)</div>
+      <div class="s-opt" data-group="welfareAttuale" data-val="Sì, strutturato" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Sì, strutturato</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">7. Strumenti presenti <span style="color:var(--muted);font-weight:400">(selezione multipla)</span></p>
+      <div class="s-opt" data-key="strumenti" data-val="Sanità integrativa" onclick="sMulti(this)"><span class="s-box"><span class="s-check">✓</span></span>Sanità integrativa</div>
+      <div class="s-opt" data-key="strumenti" data-val="Buoni spesa" onclick="sMulti(this)"><span class="s-box"><span class="s-check">✓</span></span>Buoni spesa</div>
+      <div class="s-opt" data-key="strumenti" data-val="Previdenza complementare" onclick="sMulti(this)"><span class="s-box"><span class="s-check">✓</span></span>Previdenza complementare</div>
+      <div class="s-opt" data-key="strumenti" data-val="Convenzioni" onclick="sMulti(this)"><span class="s-box"><span class="s-check">✓</span></span>Convenzioni</div>
+      <div class="s-opt" data-key="strumenti" data-val="Nessuno" onclick="sMulti(this)"><span class="s-box"><span class="s-check">✓</span></span>Nessuno</div>
+    </div>
+    <div class="s-nav">
+      <button class="s-btn" onclick="sPrev()" style="flex:1">← Indietro</button>
+      <button class="s-btn s-btn-primary" id="btn-s-next-3" onclick="sNext()" style="flex:2">Avanti →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Sezione D ── -->
+  <div class="s-step s-card" id="s-step-4">
+    <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem">Sezione D</p>
+    <h3 style="margin-bottom:1.25rem">Interesse e apertura</h3>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">8. Importanza del benessere dipendenti (1–5)</p>
+      <div class="s-scale">
+        <button class="s-sbtn" data-key="importanzaBenessere" data-val="1" onclick="sScale(this)">1</button>
+        <button class="s-sbtn" data-key="importanzaBenessere" data-val="2" onclick="sScale(this)">2</button>
+        <button class="s-sbtn" data-key="importanzaBenessere" data-val="3" onclick="sScale(this)">3</button>
+        <button class="s-sbtn" data-key="importanzaBenessere" data-val="4" onclick="sScale(this)">4</button>
+        <button class="s-sbtn" data-key="importanzaBenessere" data-val="5" onclick="sScale(this)">5</button>
+        <span id="lbl-importanzaBenessere" style="font-size:12px;color:var(--muted);margin-left:4px">seleziona</span>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">9. Interesse per soluzioni welfare fiscalmente vantaggiose?</p>
+      <div class="s-opt" data-group="interesseSoluzioni" data-val="Sì" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Sì</div>
+      <div class="s-opt" data-group="interesseSoluzioni" data-val="Forse" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Forse</div>
+      <div class="s-opt" data-group="interesseSoluzioni" data-val="No" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>No</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <p style="font-weight:500;font-size:14px;margin-bottom:10px">10. Obiettivo aziendale principale oggi</p>
+      <div class="s-opt" data-group="obiettivo" data-val="Ridurre costi" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Ridurre costi</div>
+      <div class="s-opt" data-group="obiettivo" data-val="Aumentare produttività" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Aumentare produttività</div>
+      <div class="s-opt" data-group="obiettivo" data-val="Fidelizzare dipendenti" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Fidelizzare dipendenti</div>
+      <div class="s-opt" data-group="obiettivo" data-val="Crescere organico" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Crescere organico</div>
+      <div class="s-opt" data-group="obiettivo" data-val="Altro" onclick="sRadio(this)"><span class="s-dot"><span class="s-dot-inner"></span></span>Altro</div>
+    </div>
+    <div class="s-nav">
+      <button class="s-btn" onclick="sPrev()" style="flex:1">← Indietro</button>
+      <button class="s-btn s-btn-primary" id="btn-s-next-4" onclick="sNext()" disabled style="flex:2">Avanti →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Riepilogo + Invia ── -->
+  <div class="s-step s-card" id="s-step-5">
+    <h3 style="margin-bottom:5px">Riepilogo</h3>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:1.25rem">Controlla le risposte e invia per vedere il tuo score.</p>
+    <div id="s-review" style="font-size:13px;margin-bottom:1.25rem"></div>
+    <div class="s-nav">
+      <button class="s-btn" onclick="sPrev()" style="flex:1">← Indietro</button>
+      <button class="s-btn s-btn-submit" id="btn-submit" onclick="sSubmit()" style="flex:2">✓ Scopri il tuo Score</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 6: Risultato ── -->
+  <div class="s-step" id="s-step-6">
+    <div class="s-card" style="border-color:var(--border2);text-align:center;padding:2rem;margin-bottom:1rem">
+      <div style="font-size:48px;margin-bottom:.5rem">🎯</div>
+      <h3 id="s-result-title" style="font-size:1.3rem;margin-bottom:.25rem">Analisi completata</h3>
+      <p id="s-result-sub" style="color:var(--muted);font-size:13px;margin-bottom:1.5rem"></p>
+      <div id="s-scores"></div>
+      <div id="s-recommendation" style="margin-top:1.5rem;padding:1rem;background:rgba(201,168,76,.08);border:1px solid var(--border2);border-radius:10px;font-size:13px;text-align:left"></div>
+    </div>
+    <div style="text-align:center">
+      <a href="mailto:giokrilife@gmail.com?subject=Richiesta consulenza welfare" class="btn btn-gold" style="margin-right:.75rem">📞 Richiedi consulenza gratuita</a>
+      <button onclick="sReset()" class="btn btn-outline" style="font-size:13px">↩ Nuova analisi</button>
+    </div>
+  </div>
+
+</div><!-- /survey-wrap -->
+</div><!-- /survey-section -->
+
+<!-- ══════════════════════════════════════════
+     CTA FINALE
+══════════════════════════════════════════ -->
+<section id="contatti" style="text-align:center">
+  <p style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Prossimo passo</p>
+  <h2>Richiedi un'<span class="gold">Analisi di Efficienza</span></h2>
+  <div class="divider" style="margin:1rem auto"></div>
+  <p style="color:var(--muted);max-width:520px;margin:0 auto 2rem">Mappiamo le tue polizze attuali, eliminiamo i doppioni inutili e sblocchiamo il potenziale fiscale del Welfare senza intaccare il budget aziendale.</p>
+  <a href="mailto:giokrilife@gmail.com?subject=Richiesta%20Mappatura%20Rischi%20PMI" class="btn btn-gold">Ottimizza la tua Azienda</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:.5rem"><strong style="color:var(--gold)">GiOKri Life</strong> — Consulenza Strategica e Gestione del Rischio per le PMI</p>
+  <p>
+    <a href="tel:+393271160053">+39 327 1160053</a> &nbsp;·&nbsp;
+    <a href="mailto:giokrilife@gmail.com">giokrilife@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://maps.google.com/?q=Giokri+Life+Spresiano" target="_blank">Spresiano (TV)</a>
+  </p>
+  <p style="margin-top:1rem;font-size:11px;color:rgba(156,163,175,.5)">© 2025 GiOKri Life · Tutti i diritti riservati</p>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+// ── CONFIG ───────────────────────────────────────────────────────────────────
+// SOSTITUISCI questo URL con il tuo Google Apps Script Web App URL dopo il deploy
+const SHEET_URL = 'https://script.google.com/macros/s/INSERISCI_QUI_IL_TUO_URL/exec';
+
+// ── STATO ────────────────────────────────────────────────────────────────────
+let STEP = 0;
+const TOTAL = 7; // step 0..6
+let F = {};
+
+function resetF(){
+  F = {
+    azienda:'', referente:'', email:'',
+    settore:'', dipendenti:'',
+    soddisfazione:0, difficolta:'', turnover:'',
+    welfareAttuale:'', strumenti:[],
+    importanzaBenessere:0, interesseSoluzioni:'', obiettivo:''
+  };
+}
+resetF();
+
+// ── SCORING ──────────────────────────────────────────────────────────────────
+function calcScore(f){
+  let s=0;
+  s += (f.soddisfazione||0)*6;
+  if(f.difficolta==='Sì, spesso') s+=15; else if(f.difficolta==='A volte') s+=8;
+  s += ({No:5,'Sì, minimo (bonus occasionali)':12,'Sì, strutturato':4}[f.welfareAttuale]||0);
+  s += (f.importanzaBenessere||0)*7;
+  if(f.interesseSoluzioni==='Sì') s+=15; else if(f.interesseSoluzioni==='Forse') s+=7;
+  s += ({'Fidelizzare dipendenti':5,'Aumentare produttività':4,'Crescere organico':3,'Ridurre costi':2,'Altro':1}[f.obiettivo]||0);
+  return Math.min(100,Math.round(s));
+}
+function calcProp(f){
+  let v = ({'50+':80,'21–50':65,'6–20':45,'1–5':30}[f.dipendenti]||40);
+  if(f.interesseSoluzioni==='Sì') v+=15;
+  if(f.welfareAttuale==='No') v-=10;
+  if(f.turnover==='Alto') v+=10;
+  return Math.min(100,Math.max(0,Math.round(v)));
+}
+function calcProb(s,p){ return Math.min(100,Math.round(s*.6+p*.4)); }
+
+// ── NAVIGAZIONE ──────────────────────────────────────────────────────────────
+function updateProgress(){
+  const pct = Math.round((STEP/(TOTAL-1))*100);
+  document.getElementById('s-bar').style.width = pct+'%';
+  document.getElementById('s-step-label').textContent = 'Passo '+(STEP+1)+' di '+TOTAL;
+  document.getElementById('s-step-pct').textContent = pct+'%';
+}
+
+function showStep(n){
+  document.querySelectorAll('.s-step').forEach((el,i)=>el.classList.toggle('active',i===n));
+  STEP = n;
+  updateProgress();
+  if(n===5) buildReview();
+  document.getElementById('survey-section').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function sNext(){
+  if(STEP===0){
+    F.azienda   = document.getElementById('f-azienda').value.trim();
+    F.referente = document.getElementById('f-referente').value.trim();
+    F.email     = document.getElementById('f-email').value.trim();
+  }
+  showStep(STEP+1);
+  updateNextBtn();
+}
+function sPrev(){ showStep(STEP-1); updateNextBtn(); }
+
+// ── VALIDAZIONE ──────────────────────────────────────────────────────────────
+function canNext(){
+  if(STEP===0) return F.azienda.trim().length>=2;
+  if(STEP===1) return F.settore!=='' && F.dipendenti!=='';
+  if(STEP===2) return F.soddisfazione>0 && F.difficolta!=='' && F.turnover!=='';
+  if(STEP===3) return F.welfareAttuale!=='';
+  if(STEP===4) return F.importanzaBenessere>0 && F.interesseSoluzioni!=='' && F.obiettivo!=='';
+  return true;
+}
+function updateNextBtn(){
+  const btn = document.getElementById('btn-s-next-'+STEP);
+  if(!btn) return;
+  const ok = canNext();
+  btn.disabled = !ok;
+}
+function checkStep0(){
+  F.azienda = document.getElementById('f-azienda').value.trim();
+  const btn = document.getElementById('btn-s-next-0');
+  btn.disabled = F.azienda.length<2;
+}
+
+// ── INTERAZIONI ──────────────────────────────────────────────────────────────
+function sRadio(el){
+  const g=el.dataset.group, v=el.dataset.val;
+  document.querySelectorAll('[data-group="'+g+'"]').forEach(o=>o.classList.remove('sel-radio'));
+  el.classList.add('sel-radio');
+  F[g]=v;
+  updateNextBtn();
+}
+function sMulti(el){
+  const k=el.dataset.key, v=el.dataset.val;
+  if(!F[k]) F[k]=[];
+  if(el.classList.contains('sel-multi')){
+    el.classList.remove('sel-multi');
+    F[k]=F[k].filter(x=>x!==v);
+  } else {
+    el.classList.add('sel-multi');
+    F[k].push(v);
+  }
+}
+function sScale(btn){
+  const k=btn.dataset.key, v=parseInt(btn.dataset.val);
+  F[k]=v;
+  document.querySelectorAll('[data-key="'+k+'"]').forEach(b=>b.classList.toggle('on',parseInt(b.dataset.val)<=v));
+  document.getElementById('lbl-'+k).textContent = v+' / 5';
+  updateNextBtn();
+}
+
+// ── RIEPILOGO ─────────────────────────────────────────────────────────────────
+function buildReview(){
+  const rows=[
+    ['Azienda',F.azienda],['Referente',F.referente||'—'],['Email',F.email||'—'],
+    ['Settore',F.settore],['Dipendenti',F.dipendenti],
+    ['Soddisfazione',F.soddisfazione?F.soddisfazione+'/5':'—'],
+    ['Difficoltà retention',F.difficolta],['Turnover',F.turnover],
+    ['Welfare attuale',F.welfareAttuale],
+    ['Strumenti',(F.strumenti||[]).length?F.strumenti.join(', '):'—'],
+    ['Importanza benessere',F.importanzaBenessere?F.importanzaBenessere+'/5':'—'],
+    ['Interesse soluzioni',F.interesseSoluzioni],['Obiettivo',F.obiettivo],
+  ];
+  document.getElementById('s-review').innerHTML = rows.map(([k,v])=>`
+    <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+      <span style="color:var(--muted)">${k}</span>
+      <span style="font-weight:500;text-align:right;max-width:60%">${v||'—'}</span>
+    </div>`).join('');
+}
+
+// ── SUBMIT + INVIO A GOOGLE SHEETS ──────────────────────────────────────────
+async function sSubmit(){
+  const btn = document.getElementById('btn-submit');
+  btn.innerHTML = '<span class="spinner"></span>Elaborazione…';
+  btn.disabled = true;
+
+  const score = calcScore(F);
+  const prop  = calcProp(F);
+  const prob  = calcProb(score,prop);
+
+  const payload = {
+    timestamp:      new Date().toLocaleString('it-IT'),
+    azienda:        F.azienda,
+    referente:      F.referente,
+    email:          F.email,
+    settore:        F.settore,
+    dipendenti:     F.dipendenti,
+    soddisfazione:  F.soddisfazione,
+    difficolta:     F.difficolta,
+    turnover:       F.turnover,
+    welfareAttuale: F.welfareAttuale,
+    strumenti:      (F.strumenti||[]).join(' | '),
+    importanzaBenessere: F.importanzaBenessere,
+    interesseSoluzioni:  F.interesseSoluzioni,
+    obiettivo:      F.obiettivo,
+    score,
+    propensione:    prop,
+    probabilita:    prob,
+    priorita:       score>=70?'Alta':score>=40?'Media':'Bassa'
+  };
+
+  // Invia a Google Sheets (no-cors: fire-and-forget)
+  try {
+    await fetch(SHEET_URL, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+  } catch(e){
+    // Fallisce silenziosamente — i dati rimangono visibili all'utente
+    console.warn('Invio Sheet non riuscito:', e);
+  }
+
+  // Mostra risultato
+  showResult(score, prop, prob);
+  showStep(6);
+}
+
+// ── RISULTATO ─────────────────────────────────────────────────────────────────
+function showResult(score, prop, prob){
+  const [label,color] = score>=70?['Alta','#4ade80']:score>=40?['Media',getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()]:['Bassa','#f87171'];
+
+  document.getElementById('s-result-title').textContent = 'Score Welfare: '+score+'/100 — Priorità '+label;
+  document.getElementById('s-result-sub').textContent   = F.azienda+' · Analisi completata il '+new Date().toLocaleDateString('it-IT');
+
+  const bars=[
+    ['🎯 Interesse welfare',       score, color],
+    ['💼 Propensione investimento HR', prop, '#60a5fa'],
+    ['⏱ Probabilità attivazione 6m',  prob, '#a78bfa'],
+  ];
+  document.getElementById('s-scores').innerHTML = bars.map(([l,v,c])=>`
+    <div class="s-scorebar" style="text-align:left">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+        <span>${l}</span>
+        <strong style="color:${c}">${v}/100</strong>
+      </div>
+      <div class="s-scorebar-track">
+        <div class="s-scorebar-fill" style="width:${v}%;background:${c}"></div>
+      </div>
+    </div>`).join('');
+
+  // Raccomandazione personalizzata
+  let rec='';
+  if(score>=70){
+    rec='<strong style="color:#4ade80">🚀 Alta priorità</strong> — '+F.azienda+' è pronta per implementare soluzioni welfare strutturate. Il potenziale di risparmio fiscale e retention dipendenti è significativo. <strong>Consiglio: contatta GiOKri Life per un piano su misura.</strong>';
+  } else if(score>=40){
+    rec='<strong style="color:var(--gold)">📈 Buon potenziale</strong> — '+F.azienda+' mostra interesse verso il welfare ma con spazio di sviluppo. Un primo passo semplice (es. buoni spesa o sanità integrativa) può fare la differenza senza impatto sul budget.';
+  } else {
+    rec='<strong style="color:#f87171">💡 Fase di sensibilizzazione</strong> — '+F.azienda+' è nella fase iniziale. Il welfare aziendale può diventare un vantaggio competitivo concreto: scopri le soluzioni a costo zero (fiscalmente agevolate).';
+  }
+  document.getElementById('s-recommendation').innerHTML = rec;
+}
+
+// ── RESET ────────────────────────────────────────────────────────────────────
+function sReset(){
+  resetF();
+  // Pulisci UI
+  document.querySelectorAll('.s-opt.sel-radio').forEach(el=>el.classList.remove('sel-radio'));
+  document.querySelectorAll('.s-opt.sel-multi').forEach(el=>el.classList.remove('sel-multi'));
+  document.querySelectorAll('.s-sbtn.on').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('[id^="lbl-"]').forEach(el=>el.textContent='seleziona');
+  document.getElementById('f-azienda').value='';
+  document.getElementById('f-referente').value='';
+  document.getElementById('f-email').value='';
+  const b0=document.getElementById('btn-s-next-0'); b0.disabled=true;
+  showStep(0);
+}
+
+// Boot
+updateProgress();
+</script>
 
 </body>
 </html>
